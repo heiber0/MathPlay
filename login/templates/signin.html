@@ -1,0 +1,146 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-box">
+        <h2 class="title">¡Bienvenido de vuelta!</h2>
+        <p class="subtitle">Inicia sesión para seguir aprendiendo con MathPlay 🎮📘</p>
+
+        {% if error %}
+        <p class="error-msg">{{ error }}</p>
+        {% endif %}
+
+        <form action="{% url 'signin' %}" method="POST" class="auth-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="auth-btn">
+                Iniciar sesión
+            </button>
+        </form>
+
+        <p class="redirect-msg">
+            ¿Aún no tienes cuenta?
+            <a href="{% url 'signup' %}" class="redirect-link">Regístrate aquí</a>
+        </p>
+    </div>
+</div>
+
+<style>
+    .auth-container {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #0066ff, #2dd4bf);
+        padding: 20px;
+    }
+
+    .auth-box {
+        width: 100%;
+        max-width: 430px;
+        background: #fff;
+        padding: 35px 45px;
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        animation: fadeIn .8s ease;
+    }
+
+    .title {
+        margin-bottom: 10px;
+        font-size: 28px;
+        text-align: center;
+        color: #1e293b;
+        font-weight: bold;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 15px;
+        margin-bottom: 20px;
+        color: #475569;
+    }
+
+    .error-msg {
+        background: #ffebee;
+        border-left: 4px solid #e63946;
+        color: #b91c1c;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .auth-form p {
+        margin-bottom: 18px;
+    }
+
+    .auth-form input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: 2px solid #ccc;
+        outline: none;
+        transition: .3s;
+        font-size: 15px;
+    }
+
+    .auth-form input:focus {
+        border-color: #0066ff;
+    }
+
+    .auth-btn {
+        width: 100%;
+        padding: 12px;
+        background: #0066ff;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 17px;
+        cursor: pointer;
+        transition: transform .2s, background .3s;
+    }
+
+    .auth-btn:hover {
+        background: #004acc;
+        transform: translateY(-2px);
+    }
+
+    .redirect-msg {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 14px;
+        color: #475569;
+    }
+
+    .redirect-link {
+        color: #0066ff;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .redirect-link:hover {
+        text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Ocultar textos de ayuda */
+    .auth-form .helptext,
+    .auth-form ul {
+        display: none;
+    }
+</style>
+{% endblock %}
