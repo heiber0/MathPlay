@@ -1,130 +1,153 @@
 {% extends 'home.html' %}
 
 {% block content %}
-<div class="auth-container">
-    <div class="auth-box">
-        <h2 class="title">Crear una cuenta 🚀</h2>
-        <p class="subtitle">Únete a MathPlay y diviértete aprendiendo matemáticas 🎮➗</p>
+<div class="auth-container-signup">
+    <div class="auth-box-signup">
+        <h2 class="title-signup">Crear una cuenta ✨</h2>
+        <p class="subtitle-signup">Únete a MathPlay y diviértete aprendiendo matemáticas 🎮➗</p>
 
-        <form action="{% url 'signup' %}" method="POST" class="auth-form">
+        <form action="{% url 'signup' %}" method="POST" class="auth-form-signup">
             {% csrf_token %}
             {{ form.as_p }}
 
-            <button type="submit" class="auth-btn">
-                Registrarme ✨
+            <button type="submit" class="auth-btn-signup">
+                Registrarme
             </button>
         </form>
 
-        <p class="redirect-msg">
+        <p class="redirect-msg-signup">
             ¿Ya tienes cuenta?
-            <a href="{% url 'signin' %}" class="redirect-link">Inicia sesión aquí</a>
+            <a href="{% url 'signin' %}" class="redirect-link-signup">Inicia sesión aquí</a>
         </p>
     </div>
 </div>
 
 <style>
-    .auth-container {
+    /* Asegúrate de que las variables de color estén definidas en EstilosHome.css o aquí */
+    /* Usando las variables definidas en la respuesta anterior: */
+    /*
+    :root {
+        --color-primary-blue: #4a90e2; 
+        --color-secondary-green: #50e3c2; 
+        --color-white: #ffffff;
+        --color-dark-gray: #3a4a58; 
+        --color-medium-gray: #8c9ba5;
+    }
+    */
+
+    /* --- Contenedor Principal (Centrado en el 'main' de home.html) --- */
+    .auth-container-signup {
         width: 100%;
-        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #0066ff, #2dd4bf);
-        padding: 20px;
+        padding: 40px 20px;
     }
 
-    .auth-box {
+    /* --- Caja del Formulario --- */
+    .auth-box-signup {
         width: 100%;
-        max-width: 430px;
-        background: #fff;
-        padding: 35px 45px;
-        border-radius: 18px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        animation: fadeIn .8s ease;
+        max-width: 450px; /* Un poco más ancho ya que puede tener más campos */
+        background: var(--color-white); 
+        padding: 30px 40px;
+        border-radius: 10px; 
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
-    .title {
-        margin-bottom: 10px;
-        font-size: 28px;
+    /* --- Título y Subtítulo --- */
+    .title-signup {
+        margin-bottom: 8px;
+        font-size: 26px;
         text-align: center;
-        color: #1e293b;
+        color: var(--color-dark-gray);
         font-weight: bold;
     }
 
-    .subtitle {
-        text-align: center;
-        font-size: 15px;
-        margin-bottom: 20px;
-        color: #475569;
-    }
-
-    .auth-form p {
-        margin-bottom: 18px;
-    }
-
-    .auth-form input {
-        width: 100%;
-        padding: 12px;
-        border-radius: 10px;
-        border: 2px solid #ccc;
-        outline: none;
-        transition: .3s;
-        font-size: 15px;
-    }
-
-    .auth-form input:focus {
-        border-color: #0066ff;
-    }
-
-    .auth-btn {
-        width: 100%;
-        padding: 12px;
-        background: #0066ff;
-        border: none;
-        border-radius: 10px;
-        color: #fff;
-        font-size: 17px;
-        cursor: pointer;
-        transition: transform .2s, background .3s;
-    }
-
-    .auth-btn:hover {
-        background: #004acc;
-        transform: translateY(-2px);
-    }
-
-    .redirect-msg {
-        margin-top: 15px;
+    .subtitle-signup {
         text-align: center;
         font-size: 14px;
-        color: #475569;
+        margin-bottom: 25px;
+        color: var(--color-medium-gray);
     }
 
-    .redirect-link {
-        color: #0066ff;
+    /* --- Formulario y Campos --- */
+    .auth-form-signup p {
+        margin-bottom: 20px;
+    }
+
+    .auth-form-signup label {
+        display: none; /* Ocultar etiquetas si usas placeholders o si el formulario es muy obvio */
+    }
+
+    .auth-form-signup input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid var(--color-medium-gray);
+        outline: none;
+        transition: border-color .3s, box-shadow .3s;
+        font-size: 15px;
+        color: var(--color-dark-gray);
+        box-sizing: border-box;
+    }
+
+    .auth-form-signup input:focus {
+        border-color: var(--color-primary-blue);
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    }
+    
+    /* Manejo de errores de campo de Django */
+    .errorlist {
+        color: var(--color-accent-orange);
+        list-style: none;
+        padding: 0;
+        margin-top: 5px;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    /* --- Botón de Registro (Usando el color secundario verde vibrante) --- */
+    .auth-btn-signup {
+        width: 100%;
+        padding: 12px;
+        background: var(--color-secondary-green); /* Verde vibrante */
+        border: none;
+        border-radius: 8px;
+        color: var(--color-white);
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color .3s, transform .2s;
+        margin-top: 10px;
+    }
+
+    .auth-btn-signup:hover {
+        background: #43c1a3; /* Tono más oscuro de verde */
+        transform: translateY(-1px);
+    }
+
+    /* --- Mensaje de Redirección --- */
+    .redirect-msg-signup {
+        margin-top: 25px;
+        text-align: center;
+        font-size: 14px;
+        color: var(--color-dark-gray);
+    }
+
+    .redirect-link-signup {
+        color: var(--color-primary-blue); /* Enlace azul para 'Inicia sesión aquí' */
         font-weight: bold;
         text-decoration: none;
+        transition: text-decoration 0.2s;
     }
 
-    .redirect-link:hover {
+    .redirect-link-signup:hover {
         text-decoration: underline;
     }
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Ocultar los mensajes de ayuda por defecto de Django */
-    .auth-form .helptext,
-    .auth-form ul {
+    /* Ocultar textos de ayuda y listas generadas por Django */
+    .auth-form-signup .helptext,
+    .auth-form-signup ul:not(.errorlist) {
         display: none;
     }
 </style>

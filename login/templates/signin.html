@@ -1,145 +1,150 @@
 {% extends 'home.html' %}
 
 {% block content %}
-<div class="auth-container">
-    <div class="auth-box">
-        <h2 class="title">¡Bienvenido de vuelta!</h2>
-        <p class="subtitle">Inicia sesión para seguir aprendiendo con MathPlay 🎮📘</p>
+<div class="auth-container-optimized">
+    <div class="auth-box-optimized">
+        <h2 class="title-optimized">¡Bienvenido de vuelta!</h2>
+        <p class="subtitle-optimized">Inicia sesión para seguir aprendiendo con MathPlay 🎮📘</p>
 
         {% if error %}
-        <p class="error-msg">{{ error }}</p>
+        <p class="error-msg-optimized">{{ error }}</p>
         {% endif %}
 
-        <form action="{% url 'signin' %}" method="POST" class="auth-form">
+        <form action="{% url 'signin' %}" method="POST" class="auth-form-optimized">
             {% csrf_token %}
             {{ form.as_p }}
 
-            <button type="submit" class="auth-btn">
+            <button type="submit" class="auth-btn-optimized">
                 Iniciar sesión
             </button>
         </form>
 
-        <p class="redirect-msg">
+        <p class="redirect-msg-optimized">
             ¿Aún no tienes cuenta?
-            <a href="{% url 'signup' %}" class="redirect-link">Regístrate aquí</a>
+            <a href="{% url 'signup' %}" class="redirect-link-optimized">Regístrate aquí</a>
         </p>
     </div>
 </div>
 
 <style>
-    .auth-container {
+    /* Usamos 'auth-container-optimized' para centrar el formulario dentro del 'main' */
+    .auth-container-optimized {
         width: 100%;
-        min-height: 100vh;
+        /* Eliminamos el min-height: 100vh y el fondo para que encaje en el main */
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #0066ff, #2dd4bf);
-        padding: 20px;
+        padding: 40px 20px; /* Padding vertical y horizontal */
     }
 
-    .auth-box {
+    /* Utilizamos el color blanco de la paleta y bordes del home */
+    .auth-box-optimized {
         width: 100%;
-        max-width: 430px;
-        background: #fff;
-        padding: 35px 45px;
-        border-radius: 18px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        animation: fadeIn .8s ease;
+        max-width: 400px;
+        background: var(--color-white); /* Color blanco del home */
+        padding: 30px 40px;
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
-    .title {
-        margin-bottom: 10px;
-        font-size: 28px;
+    /* Títulos usando el color de texto oscuro */
+    .title-optimized {
+        margin-bottom: 8px;
+        font-size: 26px;
         text-align: center;
-        color: #1e293b;
+        color: var(--color-dark-gray);
         font-weight: bold;
     }
 
-    .subtitle {
+    /* Subtítulos usando el color de texto secundario */
+    .subtitle-optimized {
         text-align: center;
-        font-size: 15px;
-        margin-bottom: 20px;
-        color: #475569;
+        font-size: 14px;
+        margin-bottom: 25px;
+        color: var(--color-medium-gray);
     }
 
-    .error-msg {
-        background: #ffebee;
-        border-left: 4px solid #e63946;
-        color: #b91c1c;
+    /* Mensaje de error ajustado */
+    .error-msg-optimized {
+        background: rgba(255, 107, 107, 0.1); /* Fondo claro con color de acento (coral) */
+        border-left: 4px solid var(--color-accent-orange);
+        color: var(--color-accent-orange);
         padding: 10px;
-        border-radius: 8px;
-        margin-bottom: 15px;
-        font-size: 14px;
-        text-align: center;
-    }
-
-    .auth-form p {
+        border-radius: 6px;
         margin-bottom: 18px;
+        font-size: 14px;
+        text-align: center;
     }
 
-    .auth-form input {
+    /* Estilos para las etiquetas y los inputs */
+    .auth-form-optimized p {
+        margin-bottom: 20px;
+    }
+    
+    /* Ocultar etiquetas por defecto si usas placeholders (opcional) */
+    .auth-form-optimized label {
+        display: none;
+    }
+
+    .auth-form-optimized input {
         width: 100%;
         padding: 12px;
-        border-radius: 10px;
-        border: 2px solid #ccc;
+        border-radius: 8px;
+        border: 1px solid var(--color-medium-gray);
         outline: none;
-        transition: .3s;
+        transition: border-color .3s, box-shadow .3s;
         font-size: 15px;
+        color: var(--color-dark-gray);
+        box-sizing: border-box; /* Asegura que el padding no afecte el width */
     }
 
-    .auth-form input:focus {
-        border-color: #0066ff;
+    .auth-form-optimized input:focus {
+        border-color: var(--color-primary-blue);
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* Sombra azul suave */
     }
 
-    .auth-btn {
+    /* Botón de envío usando el color primario azul */
+    .auth-btn-optimized {
         width: 100%;
         padding: 12px;
-        background: #0066ff;
+        background: var(--color-primary-blue);
         border: none;
-        border-radius: 10px;
-        color: #fff;
-        font-size: 17px;
+        border-radius: 8px;
+        color: var(--color-white);
+        font-size: 16px;
+        font-weight: bold;
         cursor: pointer;
-        transition: transform .2s, background .3s;
+        transition: background-color .3s, transform .2s;
+        margin-top: 10px;
     }
 
-    .auth-btn:hover {
-        background: #004acc;
-        transform: translateY(-2px);
+    .auth-btn-optimized:hover {
+        background: #3977c0; /* Un tono más oscuro de azul */
+        transform: translateY(-1px);
     }
 
-    .redirect-msg {
-        margin-top: 15px;
+    /* Mensaje de redirección usando el color secundario */
+    .redirect-msg-optimized {
+        margin-top: 25px;
         text-align: center;
         font-size: 14px;
-        color: #475569;
+        color: var(--color-dark-gray);
     }
 
-    .redirect-link {
-        color: #0066ff;
+    .redirect-link-optimized {
+        color: var(--color-secondary-green); /* Enlace verde vibrante */
         font-weight: bold;
         text-decoration: none;
+        transition: text-decoration 0.2s;
     }
 
-    .redirect-link:hover {
+    .redirect-link-optimized:hover {
         text-decoration: underline;
     }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Ocultar textos de ayuda */
-    .auth-form .helptext,
-    .auth-form ul {
+    
+    /* Ocultar textos de ayuda y listas generadas por Django */
+    .auth-form-optimized .helptext,
+    .auth-form-optimized ul {
         display: none;
     }
 </style>
