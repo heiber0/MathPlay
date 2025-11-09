@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<script>
+  MathJax = { tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]} };
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathPlay</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/EstilosHome.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar-custom-style">
+
+        <div class="explore-dropdown-container">
+            <button class="explore-btn" id="explore-btn-dropdown">EXPLORAR <i class="fas fa-caret-down"></i></button>
+
+            <div class="custom-dropdown-menu" id="custom-dropdown-menu">
+                <div class="search-input-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="BUSCAR" class="search-input">
+                </div>
+
+                {% if materias %}
+                {% for materia in materias %}
+                <a href="{% url 'materia_detail' materia_id=materia.id %}" class="dropdown-item">
+                    {{ materia.nombre }} <i class="fas fa-chevron-right"></i>
+                </a>
+                {% endfor %}
+                {% else %}
+                <a href="#" class="dropdown-item">No hay materias disponibles.</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="logo-custom-style" onclick="location.href=`{% url 'home' %}`">MathPlay</div>
+
+        <div class="auth-section">
+            {% if user.is_authenticated %}
+            <span class="user-greeting">👋 {{ user.username }}</span>
+            <a href="{% url 'logout' %}" class="btn-signin-custom-style" title="Cerrar sesión">Cerrar sesión</a>
+            {% else %}
+            <a href="{% url 'signin' %}" class="btn-signin-resaltado-style">Iniciar sesión</a>
+            <a href="{% url 'signup' %}" class="btn-register-custom-style">Regístrate</a>
+            {% endif %}
+        </div>
+
+    </nav>
+
+    <main class="main-content-custom-style">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <script>
+        const exploreBtnDropdown = document.getElementById('explore-btn-dropdown');
+        const customDropdownMenu = document.getElementById('custom-dropdown-menu');
+
+        if (exploreBtnDropdown && customDropdownMenu) {
+            exploreBtnDropdown.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita que el clic se propague y cierre el menú
+                customDropdownMenu.classList.toggle('active');
+            });
+
+            // Cierra el menú si se hace clic fuera de él
+            document.addEventListener('click', (e) => {
+                if (!customDropdownMenu.contains(e.target) && !exploreBtnDropdown.contains(e.target)) {
+                    customDropdownMenu.classList.remove('active');
+                }
+            });
+        }
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

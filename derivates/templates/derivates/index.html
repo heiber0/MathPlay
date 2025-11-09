@@ -1,0 +1,189 @@
+{% extends "home.html" %}
+{% load static %}
+{% block content %}
+<section class="intro-derivates">
+
+  <h1>📘 Introducción a las Derivadas</h1>
+
+  <p class="intro-text">
+    Las <strong>derivadas</strong> permiten describir cómo cambia una cantidad respecto a otra.
+    Son una herramienta esencial del <b>cálculo diferencial</b> y aparecen en casi todo:
+    física, economía, estadística, medicina, ingeniería y más.
+  </p>
+
+  <div class="example-box">
+    <p>📍 <b>Ejemplo real:</b> Si la posición de un auto depende del tiempo,</p>
+    <p>su derivada nos dice su <b>velocidad instantánea</b>.</p>
+  </div>
+
+  <h2 class="section-title">🔍 ¿Qué significa derivar?</h2>
+  <div class="concept-cards">
+
+    <div class="concept-card fade">
+      <h3>💡 Idea intuitiva</h3>
+      <p>
+        Derivar es medir <b>cómo cambia una función</b>.  
+        Si una función sube rápido, su derivada es grande.  
+        Si es plana, la derivada vale cero.
+      </p>
+      <img src="{% static 'images/variacion.png' %}" class="concept-image">
+    </div>
+
+    <div class="concept-card fade">
+      <h3>📈 Interpretación geométrica</h3>
+      <p>
+        La derivada en un punto es la <b>pendiente de la recta tangente</b>
+        en la gráfica de la función.  
+      </p>
+      <img src="{% static 'images/tangente.png' %}" class="concept-image">
+    </div>
+
+    <div class="concept-card fade">
+      <h3>🧮 Definición formal</h3>
+      <p>Se define mediante el siguiente límite:</p>
+      <div class="formula">
+        \( f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h} \)
+      </div>
+      <p class="formula-note">Esto representa el cambio instantáneo en un punto.</p>
+    </div>
+
+  </div>
+
+  <div class="note-box">
+    <p>
+      ✅ En la siguiente sección aprenderás a calcular derivadas usando límites,  
+      luego conocerás las reglas básicas y una tabla completa de derivadas definidas.
+    </p>
+  </div>
+
+  <a class="next-button" href="{% url 'derivates_limites' %}">
+    Continuar a: Derivadas usando Límites →
+  </a>
+
+</section>
+
+<style>
+.intro-derivates {
+  max-width: 950px;
+  margin: 40px auto;
+  text-align: center;
+  padding: 25px;
+}
+
+/* Títulos */
+.intro-derivates h1 {
+  font-size: 2.3em;
+  font-weight: bold;
+  color: #233b8e;
+  margin-bottom: 15px;
+}
+
+/* Texto principal */
+.intro-text {
+  color: #444;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  line-height: 1.7;
+}
+
+/* Cuadro de ejemplo real */
+.example-box {
+  background: #fff6d6;
+  border-left: 4px solid #ffc400;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
+
+/* Sección de tarjetas */
+.section-title {
+  color: #24337a;
+  font-size: 1.6em;
+  margin-bottom: 20px;
+}
+
+.concept-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  gap: 25px;
+  margin-top: 10px;
+}
+
+.concept-card {
+  background: #f4f6ff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 18px;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.concept-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.concept-card h3 {
+  color: #1d296b;
+  margin-bottom: 8px;
+}
+
+.concept-image {
+  width: 80%;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+/* Fórmula */
+.formula {
+  background: white;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 1.2em;
+  border-left: 4px solid #4b6bff;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.formula-note {
+  font-size: 0.9em;
+  color: #606060;
+}
+
+/* Nota final */
+.note-box {
+  background: #e8f0ff;
+  border-left: 4px solid #4b6bff;
+  padding: 18px;
+  margin-top: 35px;
+  border-radius: 10px;
+  color: #1f3b8f;
+}
+
+/* Botón siguiente */
+.next-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 20px;
+  background: #3e5bff;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background .2s;
+}
+.next-button:hover {
+  background: #1f39c2;
+}
+
+/* Animación suave */
+.fade {
+  animation: fadeIn .5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+</style>
+{% endblock %}

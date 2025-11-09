@@ -1,0 +1,127 @@
+{% extends "home.html" %}
+
+{% block content %}
+<section class="derivadas-definidas-section">
+  <h1>📘 Tabla de Derivadas Definidas</h1>
+  <p>Consulta las derivadas más comunes de funciones elementales. Usa esta tabla como referencia rápida para tus ejercicios.</p>
+
+  <div class="tabla-container">
+    <table class="tabla-derivadas">
+      <thead>
+        <tr>
+          <th>Función \( f(x) \)</th>
+          <th>Derivada \( f'(x) \)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>\( c \)</td>
+          <td>\( 0 \)</td>
+        </tr>
+        <tr>
+          <td>\( x^n \)</td>
+          <td>\( n x^{n-1} \)</td>
+        </tr>
+        <tr>
+          <td>\( \sin(x) \)</td>
+          <td>\( \cos(x) \)</td>
+        </tr>
+        <tr>
+          <td>\( \cos(x) \)</td>
+          <td>\( -\sin(x) \)</td>
+        </tr>
+        <tr>
+          <td>\( e^x \)</td>
+          <td>\( e^x \)</td>
+        </tr>
+        <tr>
+          <td>\( \ln(x) \)</td>
+          <td>\( \dfrac{1}{x} \)</td>
+        </tr>
+        <tr>
+          <td>\( a^x \)</td>
+          <td>\( a^x \ln(a) \)</td>
+        </tr>
+        <tr>
+          <td>\( \tan(x) \)</td>
+          <td>\( \sec^2(x) \)</td>
+        </tr>
+        <tr>
+          <td>\( \cot(x) \)</td>
+          <td>\( -\csc^2(x) \)</td>
+        </tr>
+        <tr>
+          <td>\( \arcsin(x) \)</td>
+          <td>\( \dfrac{1}{\sqrt{1 - x^2}} \)</td>
+        </tr>
+        <tr>
+          <td>\( \arctan(x) \)</td>
+          <td>\( \dfrac{1}{1 + x^2} \)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note-box">
+    <p>
+      <b>Comaparación: </b>Nos podemos dar cuenta que en comparación al proceso lento y mucho más
+      largo que nos ofrecen los límites para calcular derivadas, estas reglas nos permiten obtener
+      las derivadas de funciones comunes de manera rápida y eficiente.
+    </p>
+  </div>
+</section>
+
+<style>
+.derivadas-definidas-section {
+  padding: 40px 20px;
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+}
+.derivadas-definidas-section h1 {
+  font-size: 2em;
+  color: #2b2b5f;
+  margin-bottom: 10px;
+}
+.derivadas-definidas-section p {
+  color: #555;
+  font-size: 1.1em;
+}
+.tabla-container {
+  overflow-x: auto;
+  margin-top: 30px;
+}
+.tabla-derivadas {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f9f9ff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.tabla-derivadas th {
+  background: #4b6bff;
+  color: white;
+  font-size: 1.1em;
+  padding: 12px 8px;
+}
+.tabla-derivadas td {
+  padding: 14px 10px;
+  font-size: 1.1em;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+}
+.tabla-derivadas tr:hover td {
+  background: #eef3ff;
+}
+.note-box {
+  background: #e8f0ff;
+  color: #1f3b8f;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+</style>
+
+{% endblock %}

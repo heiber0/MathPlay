@@ -1,0 +1,169 @@
+{% extends "home.html" %}
+{% load static %}
+{% block content %}
+<section class="limites-container">
+
+  <h1>📐 Derivadas Usando Límites</h1>
+
+  <p class="intro-limites">
+    La derivada se puede calcular directamente usando su definición formal.
+    Esto nos permite obtener el cambio instantáneo de una función sin usar reglas abreviadas.
+  </p>
+
+  <div class="definition-box">
+    <h3>📌 Definición formal</h3>
+    <p>La derivada de una función \( f(x) \) se define como:</p>
+    <div class="formula-big">
+      $$ f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} $$
+    </div>
+  </div>
+
+  <h2 class="section-subtitle">✅ Ejemplo paso a paso</h2>
+
+  <div class="example-card">
+    <p><b>Función:</b> \( f(x) = x^2 \)</p>
+
+    <ol class="steps">
+        <li>Aplicamos la definición:</li>
+        $$ f'(x) = \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h} $$
+
+        <li>Desarrollamos el cuadrado:</li>
+        $$ (x+h)^2 = x^2 + 2xh + h^2 $$
+
+        <li>Reemplazamos:</li>
+        $$ f'(x) = \frac{x^2 + 2xh + h^2 - x^2}{h} $$
+
+        <li>Se cancelan \( x^2 \):</li>
+        $$ f'(x) = \frac{2xh + h^2}{h} $$
+
+        <li>Factor común \( h \):</li>
+        $$ f'(x) = \frac{h(2x + h)}{h} $$
+
+        <li>Cancelación de \( h \):</li>
+        $$ f'(x) = 2x + h $$
+
+        <li>Aplicamos el límite:</li>
+        $$ f'(x) = \lim_{h \to 0} (2x + h) = 2x $$
+    </ol>
+
+    <p class="result">
+      ✅ <b>Resultado:</b> La derivada de \( x^2 \) es \( f'(x) = 2x \)
+    </p>
+  </div>
+
+  <h2 class="section-subtitle">🧠 Mini práctica</h2>
+
+  <div class="practice-box">
+    <p>Usa la definición de derivada para encontrar \( f'(x) \) si:</p>
+    <ul>
+      <li>1 \( f(x) = x^3 \)</li>
+      <li>2 \( f(x) = \frac{1}{x} \)</li>
+      <li>3 \( f(x) = 3x + 1 \)</li>
+    </ul>
+
+    <p class="hint">
+      💡 Pista: Aplica la fórmula y simplifica antes de evaluar el límite.
+    </p>
+  </div>
+
+  <a class="next-button" href="{% url 'derivates_definidas' %}">
+    Siguiente: Reglas de Derivación →
+  </a>
+
+</section>
+
+<style>
+.limites-container {
+  max-width: 900px;
+  margin: 40px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.limites-container h1 {
+  font-size: 2.2em;
+  color: #24337a;
+  margin-bottom: 20px;
+}
+
+.intro-limites {
+  font-size: 1.15em;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.definition-box {
+  background: #eef3ff;
+  border-left: 4px solid #4b6bff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 35px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.formula-big {
+  font-size: 1.35em;
+  margin-top: 10px;
+}
+
+.section-subtitle {
+  color: #1c2e70;
+  font-size: 1.5em;
+  margin-top: 30px;
+}
+
+.example-card {
+  background: #f9f9ff;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  line-height: 1.5;
+}
+
+.steps li {
+  margin: 10px 0;
+  color: #333;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 1.1em;
+  color: #1c4e91;
+  text-align: center;
+}
+
+.practice-box {
+  background: #fffbea;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #ffc400;
+  margin: 25px auto;
+  max-width: 700px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.hint {
+  font-size: 0.9em;
+  color: #85660a;
+  margin-top: 10px;
+}
+
+.next-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 22px;
+  background: #3e5bff;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.05em;
+  text-decoration: none;
+}
+.next-button:hover {
+  background: #1f39c2;
+}
+</style>
+
+{% endblock %}

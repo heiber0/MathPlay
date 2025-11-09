@@ -1,0 +1,53 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<div class="course-modules-container">
+    
+    <h2 class="module-main-title">{{ materia.nombre }}</h2>
+
+    <div class="placeholder-text module-description-text">
+        Selecciona una actividad para empezar a practicar.
+    </div>
+
+    {% for activity_name in materia.activities %}
+        {% if activity_name == "Introducción a las Derivadas" %}
+            <!-- 🔹 Enlace al index de derivadas -->
+            <a href="{% url 'derivates_home' %}" class="module-card">
+                <div class="module-title">{{ activity_name }}</div>
+                <div class="module-status-icon">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+
+        {% elif activity_name == "Derivadas usando limites" %}
+            <!-- 🔹 Enlace a límites -->
+            <a href="{% url 'derivates_limites' %}" class="module-card">
+                <div class="module-title">{{ activity_name }}</div>
+                <div class="module-status-icon">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+
+        {% elif activity_name == "Derivadas y Reglas" %}
+            <!-- 🔹 Enlace a derivadas definidas -->
+            <a href="{% url 'derivates_definidas' %}" class="module-card">
+                <div class="module-title">{{ activity_name }}</div>
+                <div class="module-status-icon">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+        {% else %}
+            <!-- 🔹 Otras actividades usan la vista general de tareas -->
+            <a href="{% url 'task' %}" class="module-card">
+                <div class="module-title">{{ activity_name }}</div>
+                <div class="module-status-icon">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+        {% endif %}
+    {% endfor %}
+    
+</div>
+
+{% endblock %}

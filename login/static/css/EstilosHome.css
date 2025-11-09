@@ -1,0 +1,564 @@
+/* Paleta de Colores Vivos y Agradables */
+:root {
+    --color-primary-blue: #4a90e2;
+    /* Azul vibrante para la barra de navegación y acentos */
+    --color-secondary-green: #50e3c2;
+    /* Verde esmeralda para botones resaltados */
+    --color-light-gray: #f2f4f6;
+    /* Fondo general y elementos claros */
+    --color-dark-gray: #3a4a58;
+    /* Texto principal */
+    --color-medium-gray: #8c9ba5;
+    /* Texto secundario y bordes */
+    --color-accent-orange: #ff6b6b;
+    /* Naranja/Coral para acentos o advertencias */
+    --color-white: #ffffff;
+
+    /* Colores específicos para el dropdown */
+    --color-dropdown-bg: #ffebeb;
+    /* Fondo rosado del dropdown */
+    --color-dropdown-item-bg: #e6e6e6;
+    /* Fondo de los items del dropdown (gris claro) */
+    --color-dropdown-border: #cccccc;
+    /* Borde del dropdown */
+}
+
+body {
+    background-color: var(--color-light-gray);
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Fuente más moderna */
+    color: var(--color-dark-gray);
+}
+
+/* --- Barra de Navegación Personalizada --- */
+
+.navbar-custom-style {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-primary-blue);
+    /* Fondo azul principal */
+    padding: 10px 30px;
+    /* Más padding para los lados */
+    height: 60px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    /* Importante para posicionar el dropdown */
+    z-index: 10;
+    /* Asegura que la nav esté sobre otros elementos */
+}
+
+/* --- Contenedor del Dropdown EXPLORAR --- */
+.explore-dropdown-container {
+    position: relative;
+    /* Para que el dropdown se posicione respecto a este */
+}
+
+/* --- Botón EXPLORAR Personalizado --- */
+.explore-btn {
+    background-color: var(--color-secondary-green);
+    /* Verde vibrante */
+    color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: 8px;
+    /* Bordes más suaves */
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Espacio entre texto y flecha */
+    transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+    background-color: #43c1a3;
+    /* Tono más oscuro al pasar el ratón */
+}
+
+/* --- LOGO Central Personalizado --- */
+
+.logo-custom-style {
+    background-color: var(--color-white);
+    /* Fondo blanco */
+    color: var(--color-primary-blue);
+    /* Texto azul */
+    padding: 10px 40px;
+    font-size: 1.8em;
+    /* Más grande */
+    font-weight: 900;
+    /* Más audaz */
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Sección de Autenticación --- */
+
+.auth-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* Más espacio entre los elementos */
+    font-size: 1em;
+}
+
+.user-greeting {
+    color: var(--color-white);
+    font-weight: 500;
+}
+
+/* --- Botón Iniciar Sesión Personalizado (Texto) --- */
+
+.btn-signin-custom-style {
+    color: var(--color-white);
+    text-decoration: none;
+    padding: 8px 15px;
+    /* Para que sea clickeable cómodamente */
+    transition: color 0.3s ease;
+}
+
+.btn-signin-custom-style:hover {
+    color: var(--color-secondary-green);
+    /* Cambia de color al pasar el ratón */
+}
+
+/* --- Botón Regístrate Personalizado (Resaltado) --- */
+
+.btn-register-custom-style {
+    background-color: var(--color-white);
+    /* Fondo blanco */
+    color: var(--color-primary-blue);
+    /* Texto azul */
+    padding: 8px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid var(--color-white);
+    /* Borde blanco */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-register-custom-style:hover {
+    background-color: var(--color-secondary-green);
+    /* Fondo verde al pasar el ratón */
+    color: var(--color-white);
+    border-color: var(--color-secondary-green);
+}
+
+/* --- Sidebar/Dropdown Personalizado (nueva estructura) --- */
+
+.custom-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    /* Aparece justo debajo de la navbar */
+    left: 0;
+    width: 280px;
+    /* Ancho fijo como en la imagen */
+    background-color: var(--color-dropdown-bg);
+    /* Fondo rosado/claro */
+    border-radius: 0 0 8px 8px;
+    /* Bordes redondeados solo abajo */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: none;
+    /* Oculto por defecto */
+    padding: 10px 0;
+    z-index: 9;
+    /* Debe estar por debajo de la navbar */
+    border: 1px solid var(--color-dropdown-border);
+    /* Borde claro */
+    border-top: none;
+    /* No hay borde superior */
+}
+
+.custom-dropdown-menu.active {
+    display: block;
+    /* Visible cuando está activo */
+}
+
+/* --- Input de Búsqueda dentro del Dropdown --- */
+.search-input-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-dropdown-item-bg);
+    /* Fondo gris claro */
+    padding: 8px 15px;
+    margin: 10px 15px;
+    /* Espacio alrededor */
+    border-radius: 5px;
+    border: 1px solid var(--color-dropdown-border);
+}
+
+.search-input-container i {
+    color: var(--color-medium-gray);
+    margin-right: 10px;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 1em;
+    color: var(--color-dark-gray);
+}
+
+.search-input::placeholder {
+    color: var(--color-medium-gray);
+}
+
+
+/* --- Items del Dropdown --- */
+.dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    color: var(--color-dark-gray);
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+    margin: 5px 15px;
+    /* Espacio entre items y a los lados */
+    border-radius: 5px;
+    background-color: var(--color-dropdown-item-bg);
+    /* Fondo gris claro */
+    border: 1px solid transparent;
+    /* Borde transparente por defecto */
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-medium-gray);
+    /* Fondo más oscuro al pasar el ratón */
+    color: var(--color-white);
+    border-color: var(--color-dark-gray);
+    /* Borde para el hover */
+}
+
+.dropdown-item i {
+    color: var(--color-medium-gray);
+    /* Color de las flechas */
+}
+
+.dropdown-item:hover i {
+    color: var(--color-white);
+    /* Color de las flechas al pasar el ratón */
+}
+
+
+/* --- Contenido Principal (El gran recuadro central) --- */
+
+.main-content-custom-style {
+    margin: 20px;
+    border: 1px solid var(--color-medium-gray);
+    /* Borde más sutil */
+    background-color: var(--color-white);
+    min-height: calc(100vh - 120px);
+    padding: 30px;
+    border-radius: 10px;
+    /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    /* Sombra suave */
+}
+
+.placeholder-text {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-medium-gray);
+    padding-top: 50px;
+}
+
+.btn-signin-resaltado-style {
+    /* Mismos estilos de caja que btn-register-custom-style */
+    background-color: var(--color-white);
+    /* Fondo blanco */
+    color: var(--color-primary-blue);
+    /* Texto azul */
+    padding: 8px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid var(--color-white);
+    /* Borde blanco */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-signin-resaltado-style:hover {
+    /* Hover con el color primario azul para un contraste claro */
+    background-color: var(--color-secondary-green);
+    color: var(--color-white);
+    border-color: var(--color-secondary-green);
+    /* Mantiene el borde blanco al pasar el ratón */
+}
+
+/* --- Sidebar/Dropdown Personalizado (Estilos Coherentes) --- */
+
+.custom-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 280px;
+
+    /* Fondo: Usamos blanco para un look más limpio y moderno, como tu caja de formularios */
+    background-color: var(--color-white);
+
+    border-radius: 0 0 10px 10px;
+    /* Bordes redondeados más suaves */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    /* Sombra más pronunciada para profundidad */
+    display: none;
+    padding: 10px;
+    /* Padding interno uniforme */
+    z-index: 9;
+
+    /* Borde: Usamos el color medio para un borde sutil */
+    border: 1px solid var(--color-medium-gray);
+    border-top: none;
+}
+
+/* --- Input de Búsqueda dentro del Dropdown --- */
+.search-input-container {
+    display: flex;
+    align-items: center;
+
+    /* Fondo: Usamos el gris claro del fondo general o un blanco puro */
+    background-color: var(--color-light-gray);
+
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    /* Espacio antes de los ítems */
+    border-radius: 8px;
+    border: 1px solid var(--color-medium-gray);
+    transition: box-shadow 0.3s ease;
+}
+
+.search-input-container:focus-within {
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    /* Sombra azul al enfocar, como los inputs */
+    border-color: var(--color-primary-blue);
+}
+
+.search-input-container i {
+    color: var(--color-medium-gray);
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 1em;
+    color: var(--color-dark-gray);
+}
+
+
+/* --- Items del Dropdown --- */
+.dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    color: var(--color-dark-gray);
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    margin: 5px 0;
+    /* Sin margen a los lados, ocupa todo el ancho del padding del menú */
+    border-radius: 6px;
+    /* Bordes redondeados suaves en los ítems */
+    background-color: transparent;
+    /* Ítems transparentes por defecto */
+}
+
+.dropdown-item:hover {
+    /* Efecto al pasar el ratón: Fondo azul primario y texto blanco */
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
+    transform: translateX(3px);
+    /* Pequeño desplazamiento para un efecto visual */
+}
+
+.dropdown-item i {
+    color: var(--color-medium-gray);
+    /* Color de las flechas por defecto */
+    transition: color 0.2s ease;
+}
+
+.dropdown-item:hover i {
+    color: var(--color-white);
+    /* Las flechas se vuelven blancas al pasar el ratón */
+}
+
+/* --- Estilos para la Vista de Módulos/Actividades --- */
+
+.course-modules-container {
+    /* Centra el contenido si no es muy ancho */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.module-main-title {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--color-primary-blue);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.module-description-text {
+    /* Estilo para el "XXXXXXXXXXXXXXX" debajo del título */
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--color-medium-gray);
+    margin-bottom: 30px;
+}
+
+/* --- Tarjeta o Barra de Actividad (module-card) --- */
+
+.module-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* Simula la barra de la imagen */
+    width: 100%;
+    padding: 15px 25px;
+    margin: 15px 0; /* Espacio entre barras */
+    
+    background-color: var(--color-light-gray); /* Fondo gris claro, similar a la imagen */
+    border: 1px solid var(--color-medium-gray);
+    border-radius: 8px;
+    
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.module-card:hover {
+    /* Efecto al pasar el ratón: Usa el color primario azul para resaltar */
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
+    transform: translateY(-2px); /* Un pequeño levantamiento */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.module-card:hover .module-title {
+    color: var(--color-white);
+}
+
+.module-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--color-dark-gray);
+    transition: color 0.2s ease;
+}
+
+/* Íconos de estado/flechas */
+.module-status-icon i {
+    font-size: 1.1em;
+    color: var(--color-primary-blue); /* Color azul primario para la flecha por defecto */
+    transition: color 0.2s ease;
+}
+
+.module-card:hover .module-status-icon i {
+    color: var(--color-white); /* Ícono blanco al pasar el ratón */
+}
+
+/* --- Estilo para Módulos Completados (opcional) --- */
+
+.module-card.completed {
+    /* Si un módulo está completado, puede tener un color diferente */
+    background-color: var(--color-secondary-green);
+    border-color: #39b79c;
+}
+
+.module-card.completed .module-title {
+    color: var(--color-white);
+}
+
+.module-card.completed .module-status-icon i {
+    /* Ícono de check para completado */
+    color: var(--color-white);
+    font-size: 1.2em;
+}
+
+.module-card.completed:hover {
+    background-color: #39b79c; /* Tono de verde ligeramente más oscuro al pasar el ratón */
+    transform: translateY(0); /* Evita el levantamiento si ya está completado */
+    box-shadow: none;
+}
+
+.intro-container {
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+}
+
+.title-main {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.concept-section {
+    margin: 2rem 0;
+    border-left: 4px solid #3b82f6;
+    padding-left: 1rem;
+}
+
+.concept-grid, .interpretation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.concept-card {
+    background: #f7f9fc;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.concept-img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+}
+
+.math-box {
+    background: #eef4ff;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    margin: 1rem 0;
+}
+
+.quiz-section {
+    background: #f8fbff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+#check-quiz {
+    margin-top: 1rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
