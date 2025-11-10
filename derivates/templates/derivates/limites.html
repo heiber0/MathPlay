@@ -1,24 +1,133 @@
-{% extends "home.html" %}
-{% load static %}
-{% block content %}
-<section class="limites-container">
+  {% extends "home.html" %}
+  {% load static %}
+  {% block content %}
+  <section class="limites-container">
 
-  <h1>📐 Derivadas Usando Límites</h1>
+  <h1>📘 Derivadas Usando Límites</h1>
 
   <p class="intro-limites">
-    La derivada se puede calcular directamente usando su definición formal.
-    Esto nos permite obtener el cambio instantáneo de una función sin usar reglas abreviadas.
+    Aunque existen reglas rápidas para derivar, la forma más importante y fundamental es
+    la definición mediante límites.  
+    Esta idea nos permite obtener el cambio <b>instantáneo</b> de una función.
   </p>
 
+  <!-- DEFINICIÓN FORMAL -->
   <div class="definition-box">
     <h3>📌 Definición formal</h3>
     <p>La derivada de una función \( f(x) \) se define como:</p>
+
     <div class="formula-big">
       $$ f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} $$
     </div>
+
+    <p class="explain-text">
+      Esta expresión calcula la pendiente de la recta secante entre dos puntos.
+      Cuando \( h \) se vuelve muy pequeño, la secante se convierte en la <b>recta tangente</b>,
+      es decir, la pendiente exacta en un punto.
+    </p>
   </div>
 
-  <h2 class="section-subtitle">✅ Ejemplo paso a paso</h2>
+  <h2>Vista desde un gráfico</h2>
+  <p>Elige una función y mueve el control de \( h \) para ver cómo la secante se vuelve tangente.</p>
+
+  <select id="funcSelector" style="padding:6px; margin-bottom:10px;">
+      <option value="x2">f(x) = x²</option>
+      <option value="x3">f(x) = x³</option>
+      <option value="exp">f(x) = eˣ</option>
+      <option value="ln">f(x) = ln(x)</option>
+      <option value="sin">f(x) = sin(x)</option>
+  </select>
+
+  <canvas id="canvasDerivada" width="500" height="350" style="border:1px solid #ccc"></canvas>
+
+  <div style="margin-top:15px;">
+    <label><b>Valor de h:</b> <span id="hValue">1</span></label>
+    <input type="range" id="sliderH" min="0.1" max="2" step="0.1" value="1" style="width:300px;">
+  </div>
+
+  <p><b>Pendiente aproximada:</b> <span id="pendiente"></span></p>
+
+  <script>
+  const canvas = document.getElementById("canvasDerivada");
+  const ctx = canvas.getContext("2d");
+
+  // FUNCIONES DISPONIBLES
+  function f(x, type) {
+      if (type === "x2") return x*x;
+      if (type === "x3") return x*x*x;
+      if (type === "exp") return Math.exp(x);
+      if (type === "ln") return Math.log(x);
+      if (type === "sin") return Math.sin(x);
+  }
+
+  let tipoFuncion = "x2";
+  const x0 = 2;
+
+  const slider = document.getElementById("sliderH");
+  const hValue = document.getElementById("hValue");
+  const pendienteTxt = document.getElementById("pendiente");
+  const funcSelector = document.getElementById("funcSelector");
+
+  function dibujar(h, tipo) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Ejes
+      ctx.beginPath();
+      ctx.strokeStyle = "#777";
+      ctx.moveTo(50, 300);
+      ctx.lineTo(450, 300);
+      ctx.moveTo(50, 300);
+      ctx.lineTo(50, 50);
+      ctx.stroke();
+
+      // Curva
+      ctx.beginPath();
+      ctx.strokeStyle = "#1867c0";
+      for (let x = 0.3; x <= 5; x+=0.05) {
+          let px = 50 + x*60;
+          let py = 300 - f(x, tipo)*40;
+          if (x === 0.3) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+
+      let x1 = x0 + h;
+      let y0 = f(x0, tipo);
+      let y1 = f(x1, tipo);
+
+      let px0 = 50 + x0*60;
+      let py0 = 300 - y0*40;
+      let px1 = 50 + x1*60;
+      let py1 = 300 - y1*40;
+
+      // Secante
+      ctx.beginPath();
+      ctx.strokeStyle = "#e63946";
+      ctx.moveTo(px0, py0);
+      ctx.lineTo(px1, py1);
+      ctx.stroke();
+
+      // Pendiente
+      let pendiente = (y1 - y0) / h;
+      pendienteTxt.innerHTML = pendiente.toFixed(4);
+  }
+
+  slider.addEventListener("input", function() {
+      let h = parseFloat(slider.value);
+      hValue.innerHTML = h;
+      dibujar(h, tipoFuncion);
+  });
+
+  funcSelector.addEventListener("change", function() {
+      tipoFuncion = this.value;
+      dibujar(parseFloat(slider.value), tipoFuncion);
+  });
+
+  // Inicial
+  dibujar(1, tipoFuncion);
+  </script>
+
+  <h2 class="section-subtitle">✅ EJEMPLO</h2>
 
   <div class="example-card">
     <p><b>Función:</b> \( f(x) = x^2 \)</p>
@@ -51,18 +160,17 @@
     </p>
   </div>
 
-  <h2 class="section-subtitle">🧠 Mini práctica</h2>
-
-  <div class="practice-box">
-    <p>Usa la definición de derivada para encontrar \( f'(x) \) si:</p>
-    <ul>
-      <li>1 \( f(x) = x^3 \)</li>
-      <li>2 \( f(x) = \frac{1}{x} \)</li>
-      <li>3 \( f(x) = 3x + 1 \)</li>
-    </ul>
-
-    <p class="hint">
-      💡 Pista: Aplica la fórmula y simplifica antes de evaluar el límite.
+    <!-- INTERPRETACIÓN REAL -->
+  <div class="real-example">
+    <h3>Interpretación real</h3>
+    <p>
+      Si \( f(x) \) representa la posición de un auto,  
+      entonces \( f'(x) \) es su <b>velocidad instantánea</b>.
+    </p>
+    <p>
+      El cociente
+      \( \frac{f(x+h) - f(x)}{h} \) mide la velocidad promedio entre dos puntos,
+      pero al hacer \( h \to 0 \) obtenemos la velocidad exacta en un instante.
     </p>
   </div>
 
@@ -148,6 +256,17 @@
   font-size: 0.9em;
   color: #85660a;
   margin-top: 10px;
+}
+
+.real-example {
+  background: #fffbea;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #ffc400;
+  margin-top: 35px;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .next-button {
