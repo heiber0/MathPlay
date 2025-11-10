@@ -1,0 +1,45 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}¿Qué es una Integral? | MathPlay{% endblock %}
+
+{% block extra_head %}
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="{% static 'integrales/css/conceptos.css' %}">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <h1>¿Qué es una Integral?</h1>
+        <p>Una integral representa el área bajo una curva. Sirve para calcular acumulaciones, áreas y volúmenes.</p>
+    </header>
+
+    <main>
+        <section class="contenido">
+            <article class="explicacion">
+                <h2>Definición básica</h2>
+                <p>
+                    La integral de una función <b>f(x)</b> entre dos puntos <b>a</b> y <b>b</b> 
+                    se interpreta como el área bajo la gráfica de la función entre esos límites.
+                </p>
+                <p>
+                    Se denota como:
+                    <span class="formula">∫<sub>a</sub><sup>b</sup> f(x) dx</span>
+                </p>
+            </article>
+
+            <article class="grafico">
+                <canvas id="grafica"></canvas>
+                <div class="controles">
+                    <label for="limiteB">Límite superior (b):</label>
+                    <input type="range" id="limiteB" min="1" max="10" value="5" step="0.5">
+                    <span id="valorB">5</span>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script src="{% static 'integrales/js/conceptos.js' %}"></script>
+{% endblock %}

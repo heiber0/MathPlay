@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 {% load static %}
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathPlay</title>
+
+    <!-- 🔹 Bloque de título dinámico -->
+    <title>{% block title %}MathPlay{% endblock %}</title>
+
+    <!-- 🔹 Estilos globales -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/EstilosHome.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- 🔹 Bloque para estilos o librerías adicionales (por página) -->
+    {% block extra_head %}{% endblock %}
 </head>
 
 <body>
 
     <nav class="navbar-custom-style">
-
         <div class="explore-dropdown-container">
             <button class="explore-btn" id="explore-btn-dropdown">EXPLORAR <i class="fas fa-caret-down"></i></button>
 
@@ -46,25 +52,26 @@
             <a href="{% url 'signup' %}" class="btn-register-custom-style">Regístrate</a>
             {% endif %}
         </div>
-
     </nav>
 
+    <!-- 🔹 Contenido dinámico -->
     <main class="main-content-custom-style">
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
     </main>
+    <footer class="footer-custom-style" style="background-color: #4a90e2; color: white; text-align: center;padding: 1rem 0; font-size: 0.9rem; position: relative; bottom: 0; width: 100%;">
+        <p>© 2024 MathPlay. Todos los derechos reservados.</p>
 
+    <!-- 🔹 Script base del sitio -->
     <script>
         const exploreBtnDropdown = document.getElementById('explore-btn-dropdown');
         const customDropdownMenu = document.getElementById('custom-dropdown-menu');
 
         if (exploreBtnDropdown && customDropdownMenu) {
             exploreBtnDropdown.addEventListener('click', (e) => {
-                e.stopPropagation(); // Evita que el clic se propague y cierre el menú
+                e.stopPropagation();
                 customDropdownMenu.classList.toggle('active');
             });
 
-            // Cierra el menú si se hace clic fuera de él
             document.addEventListener('click', (e) => {
                 if (!customDropdownMenu.contains(e.target) && !exploreBtnDropdown.contains(e.target)) {
                     customDropdownMenu.classList.remove('active');
@@ -73,6 +80,8 @@
         }
     </script>
 
+    <!-- 🔹 Bloque para scripts adicionales -->
+    {% block extra_scripts %}{% endblock %}
 </body>
 
 </html>

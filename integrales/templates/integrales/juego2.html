@@ -1,0 +1,38 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+<h2>🎲 Juego 2: Empareja la función con su integral</h2>
+<p>Arrastra cada función y suéltala sobre su integral correspondiente.</p>
+
+<div class="game-container">
+    <div class="column funciones">
+        <h3>Funciones f(x)</h3>
+        <div class="item" draggable="true" data-match="1">f(x) = x</div>
+        <div class="item" draggable="true" data-match="2">f(x) = 2x</div>
+        <div class="item" draggable="true" data-match="3">f(x) = cos(x)</div>
+        <div class="item" draggable="true" data-match="4">f(x) = eˣ</div>
+    </div>
+
+    <div class="column integrales">
+        <h3>Integrales ∫f(x)dx</h3>
+        <div class="dropzone" data-match="3">∫f(x)dx = sin(x) + C</div>
+        <div class="dropzone" data-match="2">∫f(x)dx = x² + C</div>
+        <div class="dropzone" data-match="4">∫f(x)dx = eˣ + C</div>
+        <div class="dropzone" data-match="1">∫f(x)dx = x²/2 + C</div>
+    </div>
+</div>
+
+<div class="result" id="resultado"></div>
+
+<button id="reiniciar">🔁 Reiniciar juego</button>
+{% endblock %}
+
+{% block extra_head %}
+<title>Juego 2: Empareja la función con su integral</title>
+<link rel="stylesheet" href="{% static 'integrales/css/juego2.css' %}">
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'integrales/js/juego2.js' %}"></script>
+{% endblock %}

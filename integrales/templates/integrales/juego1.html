@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">🎮 Juego: Adivina el área bajo la curva</h2>
+<p>Observa la gráfica y selecciona cuál crees que es el área bajo la curva.</p>
+
+<div id="grafica" style="width:90%;max-width:700px;margin:auto;"></div>
+
+<div id="opciones" class="text-center mt-6"></div>
+
+<p id="resultado" class="text-center mt-4 font-semibold"></p>
+
+<div class="text-center mt-8">
+    <button onclick="nuevoJuego()" class="bg-blue-600 text-white px-4 py-2 rounded">Nuevo ejercicio</button>
+</div>
+{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'integrales/css/juego1.css' %}">
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'integrales/js/juego1.js' %}"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}

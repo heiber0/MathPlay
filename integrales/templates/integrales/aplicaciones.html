@@ -1,0 +1,59 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+<header>
+        <h1>Aplicaciones de las Integrales</h1>
+        <p>Explora cómo las integrales se aplican para calcular áreas, volúmenes y trabajo.</p>
+    </header>
+
+    <section id="teoria">
+        <h2>Conceptos básicos</h2>
+        <div class="card">
+            <h3>1. Área bajo la curva</h3>
+            <p>El área bajo una función f(x) entre los puntos a y b se calcula como:</p>
+            <pre>A = ∫<sub>a</sub><sup>b</sup> f(x) dx</pre>
+        </div>
+
+        <div class="card">
+            <h3>2. Volumen de revolución</h3>
+            <p>Cuando una región se gira alrededor del eje x, el volumen es:</p>
+            <pre>V = π ∫<sub>a</sub><sup>b</sup> [f(x)]² dx</pre>
+        </div>
+
+        <div class="card">
+            <h3>3. Trabajo de una fuerza variable</h3>
+            <p>Si una fuerza F(x) actúa a lo largo de una distancia, el trabajo es:</p>
+            <pre>W = ∫<sub>a</sub><sup>b</sup> F(x) dx</pre>
+        </div>
+    </section>
+
+    <section id="visualizador">
+        <h2>Visualizador interactivo: Área bajo la curva</h2>
+        <div class="inputs">
+            <label>Función f(x): <input type="text" id="funcion" value="x**2"></label>
+            <label>Límite a: <input type="number" id="a" value="0"></label>
+            <label>Límite b: <input type="number" id="b" value="2"></label>
+            <button onclick="graficar()">Graficar</button>
+        </div>
+        <div id="grafica"></div>
+    </section>
+
+    <section id="actividad">
+        <h2>Mini actividad</h2>
+        <p>¿Cuál es el área bajo la curva de f(x)=x² en el intervalo [0,2]?</p>
+        <button onclick="verificarRespuesta(2.67)">2.67</button>
+        <button onclick="verificarRespuesta(3)">3</button>
+        <button onclick="verificarRespuesta(4.5)">4.5</button>
+        <p id="resultado"></p>
+    </section>
+{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'integrales/css/aplicaciones.css' %}">
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="{% static 'integrales/js/aplicaciones.js' %}"></script>
+{% endblock %}

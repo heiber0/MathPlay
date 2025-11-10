@@ -9,21 +9,14 @@ from django.contrib.auth.decorators import login_required
 
 # --- Datos Simulados de Materias ---
 MATERIAS = [
-    {'id': 'algebra', 'nombre': 'Álgebra Lineal 📚', 'activities': [
-        'Conceptos Clave y Vectores', 
-        'Sistema de Ecuaciones Lineales', 
-        'Matrices y Determinantes', 
-        'Transformaciones Lineales'
-    ]},
-    {'id': 'calculo', 'nombre': 'Cálculo Avanzado 📈', 'activities': [
-        'Límites y Continuidad', 
-        'Derivadas y Reglas', 
-        'Integrales Definidas'
-    ]},
-    {'id': 'geometria', 'nombre': 'Geometría Analítica 📐', 'activities': [
-        'Planos Cartesianos', 
-        'Cónicas y Elipses'
-    ]},
+    {'id': 'Integrales', 'nombre': 'Integrales 📚', 'activities': [
+        'Conceptos Claves de Integrales', 
+        'Propiedades de Integrales', 
+        'Aplicaciones de Integrales', 
+        'Actividad 1: Adivina el área bajo la curva',
+        'Actividad 2: Empareja la función con su integral'],
+        'link': ['integrales/conceptos', 'integrales/propiedades', 'integrales/aplicaciones', 'integrales/juego1', 'integrales/juego2'],
+    },
 ]
 # --- Fin Datos Simulados ---
 

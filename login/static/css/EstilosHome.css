@@ -255,17 +255,20 @@ body {
 /* --- Contenido Principal (El gran recuadro central) --- */
 
 .main-content-custom-style {
-    margin: 20px;
+    width: 100vw;
+    /* ocupa todo el ancho de la ventana */
+    margin: 0;
+    /* elimina el espacio en los bordes */
     border: 1px solid var(--color-medium-gray);
-    /* Borde más sutil */
     background-color: var(--color-white);
     min-height: calc(100vh - 120px);
-    padding: 30px;
-    border-radius: 10px;
-    /* Bordes redondeados */
+    /* ajusta según el alto del nav/footer */
+    border-radius: 0;
+    /* elimina esquinas redondeadas si quieres que encaje al 100% */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    /* Sombra suave */
+    box-sizing: border-box;
 }
+
 
 .placeholder-text {
     text-align: center;
@@ -431,16 +434,18 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
     /* Simula la barra de la imagen */
     width: 100%;
     padding: 15px 25px;
-    margin: 15px 0; /* Espacio entre barras */
-    
-    background-color: var(--color-light-gray); /* Fondo gris claro, similar a la imagen */
+    margin: 15px 0;
+    /* Espacio entre barras */
+
+    background-color: var(--color-light-gray);
+    /* Fondo gris claro, similar a la imagen */
     border: 1px solid var(--color-medium-gray);
     border-radius: 8px;
-    
+
     text-decoration: none;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
@@ -450,7 +455,8 @@ body {
     /* Efecto al pasar el ratón: Usa el color primario azul para resaltar */
     background-color: var(--color-primary-blue);
     color: var(--color-white);
-    transform: translateY(-2px); /* Un pequeño levantamiento */
+    transform: translateY(-2px);
+    /* Un pequeño levantamiento */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -468,12 +474,14 @@ body {
 /* Íconos de estado/flechas */
 .module-status-icon i {
     font-size: 1.1em;
-    color: var(--color-primary-blue); /* Color azul primario para la flecha por defecto */
+    color: var(--color-primary-blue);
+    /* Color azul primario para la flecha por defecto */
     transition: color 0.2s ease;
 }
 
 .module-card:hover .module-status-icon i {
-    color: var(--color-white); /* Ícono blanco al pasar el ratón */
+    color: var(--color-white);
+    /* Ícono blanco al pasar el ratón */
 }
 
 /* --- Estilo para Módulos Completados (opcional) --- */
@@ -495,7 +503,25 @@ body {
 }
 
 .module-card.completed:hover {
-    background-color: #39b79c; /* Tono de verde ligeramente más oscuro al pasar el ratón */
-    transform: translateY(0); /* Evita el levantamiento si ya está completado */
+    background-color: #39b79c;
+    /* Tono de verde ligeramente más oscuro al pasar el ratón */
+    transform: translateY(0);
+    /* Evita el levantamiento si ya está completado */
     box-shadow: none;
+}
+
+.footer-base {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-base p {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
 }

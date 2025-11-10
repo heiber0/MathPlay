@@ -1,0 +1,80 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+<div class="integrales-container">
+    <header>
+        <h1>Reglas y Propiedades de las Integrales</h1>
+        <p>Aprende las reglas básicas que facilitan el cálculo de integrales.</p>
+    </header>
+
+    <main>
+        <section class="tarjetas">
+            <div class="card">
+                <div class="front">
+                    <h2>Linealidad</h2>
+                    <p>Haz clic para ver ejemplo</p>
+                </div>
+                <div class="back">
+                    <p>∫[a·f(x) + b·g(x)] dx = a∫f(x) dx + b∫g(x) dx</p>
+                    <p><b>Ejemplo:</b> ∫(2x² + 3x) dx = 2∫x² dx + 3∫x dx</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="front">
+                    <h2>Potencia</h2>
+                    <p>Haz clic para ver ejemplo</p>
+                </div>
+                <div class="back">
+                    <p>∫xⁿ dx = xⁿ⁺¹ / (n+1) + C</p>
+                    <p><b>Ejemplo:</b> ∫x³ dx = x⁴/4 + C</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="front">
+                    <h2>Exponencial</h2>
+                    <p>Haz clic para ver ejemplo</p>
+                </div>
+                <div class="back">
+                    <p>∫eˣ dx = eˣ + C</p>
+                    <p>∫aˣ dx = aˣ / ln(a) + C</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="front">
+                    <h2>Trigonométricas</h2>
+                    <p>Haz clic para ver ejemplo</p>
+                </div>
+                <div class="back">
+                    <p>∫sen(x) dx = -cos(x) + C</p>
+                    <p>∫cos(x) dx = sen(x) + C</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="front">
+                    <h2>Por Sustitución</h2>
+                    <p>Haz clic para ver ejemplo</p>
+                </div>
+                <div class="back">
+                    <p>Si u = g(x), entonces ∫f(g(x))·g'(x) dx = ∫f(u) du</p>
+                    <p><b>Ejemplo:</b> ∫2x·cos(x²) dx = ∫cos(u) du = sen(u) + C = sen(x²) + C</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</div>
+{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'integrales/css/propiedades.css' %}">
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'integrales/js/propiedades.js' %}"></script>
+{% endblock %}
+
